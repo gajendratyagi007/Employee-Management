@@ -1,0 +1,16 @@
+h1 {
+  color: darkcyan;
+  font-family: Andada, Helvetica, sans-serif;
+  
+  }
+img{
+   width:50px;
+   height:50px;
+}
+
+.boldClass{
+    font-weight:bold;
+}
+.italicClass{
+    font-style:italic;
+}
