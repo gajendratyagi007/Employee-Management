@@ -24,6 +24,11 @@ var employeeService = (function () {
             .map(function (response) { return response.json(); })
             .catch(this.handleError);
     };
+    employeeService.prototype.getEmployeeByCode = function (empCode) {
+        return this._http.get("http://localhost:30941/api/employees/" + empCode)
+            .map(function (response) { return response.json(); })
+            .catch(this.handleError);
+    };
     employeeService.prototype.handleError = function (error) {
         console.error(error);
         return Observable_1.Observable.throw(error);

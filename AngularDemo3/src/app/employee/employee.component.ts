@@ -6,12 +6,12 @@ import { employeeService } from './employee.Service';
     selector: 'my-employee',
     templateUrl: 'app/employee/employee.component.html',
     styleUrls: ['app/employee/employee.component.css'],
-    providers: [employeeService]   
+   
 })
 
 
 export class EmployeeComponent implements OnInit, OnChanges{
-    columnSpan: number = 6;
+    columnSpan: number = 10;
     employees: IEmployee[];
     selectedEmployeeCountRadioButton: string = 'All';
 

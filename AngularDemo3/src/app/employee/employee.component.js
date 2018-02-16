@@ -14,7 +14,7 @@ var employee_Service_1 = require("./employee.Service");
 var EmployeeComponent = (function () {
     function EmployeeComponent(_employeeService) {
         this._employeeService = _employeeService;
-        this.columnSpan = 6;
+        this.columnSpan = 10;
         this.selectedEmployeeCountRadioButton = 'All';
         this.statusMessage = 'Loading Data. Please wait...';
         this.showDetails = false;
@@ -88,7 +88,6 @@ EmployeeComponent = __decorate([
         selector: 'my-employee',
         templateUrl: 'app/employee/employee.component.html',
         styleUrls: ['app/employee/employee.component.css'],
-        providers: [employee_Service_1.employeeService]
     }),
     __metadata("design:paramtypes", [employee_Service_1.employeeService])
 ], EmployeeComponent);

@@ -1,18 +1,3 @@
-﻿table{
-    font-family:Andada;
-   color:darkslategray;
-    font-size:medium;
-    table-layout:auto;    
-    border-collapse:collapse;     
-    outline:auto;
-  
-}
-td{
-    font-style:normal;
-   border: 1px solid black;
-}
-
-th{
-    font-style:oblique;
-  border: 1px solid black;
+﻿.table-striped{
+  font-size: 25px;
 }

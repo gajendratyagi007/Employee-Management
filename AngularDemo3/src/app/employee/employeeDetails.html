@@ -1,0 +1,43 @@
+﻿<div class="container-fluid">
+    <table *ngIf="employee" class="table table-striped">
+        <thead>
+            <tr>
+                <th colspan="2">Employee Details</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Code</td>
+                <td>{{employee.code}}</td>
+            </tr>
+            <tr>
+                <td>First Name</td>
+                <td>{{employee.firstName}}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{ employee.lastName}}</td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>{{employee.age}}</td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{{employee.gender}}</td>
+            </tr>
+            <tr>
+                <td>DOB</td>
+                <td>{{employee.DOB}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+    <div *ngIf="!employee">
+        {{statusMessage}}
+    </div>
+    <div style="margin-top:5px">
+        <input type="button" class="btn btn-primary" value="Back to Employee List" (click)="onBackButtonClick()" />
+    </div>
+</div>

@@ -3,55 +3,63 @@
     <div class="input-group">
         <span class="input-group-addon">Name</span>
         <input id="msg" type="text" class="form-control" name="msg" placeholder="Enter your name" [(ngModel)]='name' />
-        <br />
-        You have entered : {{name}}
+   
     </div>
+    <div class="input-group ">
+        <span class="input-group-addon">You have entered :</span>  {{name}}
+    </div>
+
+
+        <employee-count *ngIf="employees" [all]="getTotalEmployeeCount()"
+                        [male]="getTotalMaleEmployeeCount()"
+                        [female]="getTotalFemaleEmployeeCount()"
+                        (countRadioButtonSelectionChanged)="onEmployeeCountRadioButtonChange($event)">
+        </employee-count>
+        <br />
     
-    <employee-count *ngIf="employees" [all]="getTotalEmployeeCount()"
-                    [male]="getTotalMaleEmployeeCount()"
-                    [female]="getTotalFemaleEmployeeCount()"
-                    (countRadioButtonSelectionChanged)="onEmployeeCountRadioButtonChange($event)">
-    </employee-count>
-    <br />
-    <table class="table table-striped">
-        <tr>
-            <th [attr.colspan]="columnSpan">Employee Details</th>
-        </tr>
-        <tr>
-            <td>Code</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            <td *ngIf='showDetails'>Age</td>
-            <td *ngIf='showDetails'>Gender</td>
-            <td *ngIf='showDetails'>DOB</td>
-            <td *ngIf='showDetails'>Index</td>
-            <td *ngIf='showDetails'>First Employee</td>
-            <td *ngIf='showDetails'>Last Employee</td>
-        </tr>
-        <tr *ngIf="!employees">
-            <td colspan="5"> Loading Data. Please wait...</td>
-        </tr>
-        <ng-container *ngFor="let employe of employees; trackBy:trackByEmployeeId; let i = index; let isFirst = first; let isLast = last">
-            <tr *ngIf="selectedEmployeeCountRadioButton=='All' || selectedEmployeeCountRadioButton==employe.gender">
-                <td>{{employe.code}}</td>
-                <td>{{employe.firstName | uppercase | employeeTitle:employe.gender }}</td>
-                <td>{{employe.lastName}}</td>
-                <td *ngIf='showDetails'>{{employe.age}}</td>
-                <td *ngIf='showDetails'>{{employe.gender}}</td>
-                <td *ngIf='showDetails'>{{employe.DOB | date:'ddMMyyyy'}}</td>
-                <td *ngIf='showDetails'>{{i}}</td>
-                <td *ngIf='showDetails'>{{isFirst}}</td>
-                <td *ngIf='showDetails'>{{isLast}}</td>
+        <table class="table table-striped">
+            <tr>
+                <th [attr.colspan]="columnSpan">Employee List</th>
             </tr>
+            <tr>
+                <td>Code</td>
+                <td>First Name</td>
+                <td>Last Name</td>
+                <td *ngIf='showDetails'>Age</td>
+                <td *ngIf='showDetails'>Gender</td>
+                <td *ngIf='showDetails'>DOB</td>
+                <td *ngIf='showDetails'>Index</td>
+                <td *ngIf='showDetails'>First Employee</td>
+                <td *ngIf='showDetails'>Last Employee</td>
+            </tr>
+            <tr *ngIf="!employees">
+                <td colspan="5"> Loading Data. Please wait...</td>
+            </tr>
+            <ng-container *ngFor="let employe of employees; trackBy:trackByEmployeeId; let i = index; let isFirst = first; let isLast = last">
+                <tr *ngIf="selectedEmployeeCountRadioButton=='All' || selectedEmployeeCountRadioButton==employe.gender">
+                    <td>
+                    <a [routerLink]="['/employeeList', employe.code]">
+                    {{employe.code}}</a>
+                    </td>
+                    <td>{{employe.firstName | uppercase | employeeTitle:employe.gender }}</td>
+                    <td>{{employe.lastName}}</td>
+                    <td *ngIf='showDetails'>{{employe.age}}</td>
+                    <td *ngIf='showDetails'>{{employe.gender}}</td>
+                    <td *ngIf='showDetails'>{{employe.DOB | date:'ddMMyyyy'}}</td>
+                    <td *ngIf='showDetails'>{{i}}</td>
+                    <td *ngIf='showDetails'>{{isFirst}}</td>
+                    <td *ngIf='showDetails'>{{isLast}}</td>
+                </tr>
 
-        </ng-container>
+            </ng-container>
 
-    </table>
+        </table>
+  
 
-    <button class="btn btn-group btn-primary  " (click)='toggleDetails()'> {{showDetails ? "Hide" : "Show"}} Details</button>
-    <button class="btn btn-group btn-primary" (click)='getEmployees()'>Refresh</button>
-    <button class="btn btn-group btn-primary">Submit</button>
-    <button class="btn btn-group btn-primary" (click)='onClick()'>Click Me</button>
+        <button class="btn btn-group btn-primary  " (click)='toggleDetails()'> {{showDetails ? "Hide" : "Show"}} Details</button>
+        <button class="btn btn-group btn-primary" (click)='getEmployees()'>Refresh</button>
+        <button class="btn btn-group btn-primary">Submit</button>
+        <button class="btn btn-group btn-primary" (click)='onClick()'>Click Me</button>
     </div>
 
 
